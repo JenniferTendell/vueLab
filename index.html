@@ -5,8 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VueLab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script defer src="./main.js"></script> 
 </head>
 <body>
+    <div id="app">
+        <nav>
+            <div class="menu-container">
+                <div class="cart-container">
+                    <span class="cart material-icons">shopping_cart</span>
+                    <div :class="{ cartCount: cart > 0}">
+                        <p>{{ cart }}</p>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+        <div class="product">
+            <div class="image-container">
+                <img :src="image" class="product-image">
+            </div>
+            
+            <div class="product-info-container">
+                <h1>{{ product.title }}</h1>
+                <h3>{{ product.brand }}</h3>
+                <h2>{{ product.price }}</h2>
+                <h3>{{ variants[selectedVariant].color }}</h3>
+                
+                <div class="variants">
+                    <div v-for="(variant, index) in variants" 
+                         :key="variant.id"
+                         @click="updateProduct(index)">
+                        <img :src="variant.iconImage" 
+                             class="variant-icon" 
+                             :class="{ activeVariant: selectedVariant == index}">
+                    </div>
+                </div>
+                
+                <ul>
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
+                
+                <button @click="addToCart"
+                        :disabled="soldOut"
+                        :class="{ disabledButton: soldOut }">
+                Lägg i varukorg
+                </button>
+            </div>
+        </div>
+    </div>
+
     
 </body>
 </html>
