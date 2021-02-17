@@ -1,49 +1,38 @@
 Vue.component('product', {
     template: `
-    <div>
-        <nav>
-            <div class="menu-container">
-                <div class="cart-container">
-                    <span class="cart material-icons">shopping_cart</span>
-                    <div :class="{ cartCount: cart > 0}">
-                        <p>{{ cart }}</p>
-                    </div>
-                </div>       
-            </div>
-        </nav>
-        <div class="product">
-            <div class="image-container">
-                <img :src="image" class="product-image">
+    <div class="product">
+        <div class="image-container">
+            <img :src="image" class="product-image">
+        </div>
+        
+        <div class="product-info-container">
+            <h1>{{ product.title }}</h1>
+            <h3>{{ product.brand }}</h3>
+            <h2>{{ product.price }}</h2>
+            <h3>{{ variants[selectedVariant].color }}</h3>
+            
+            <div class="variants">
+                <div v-for="(variant, index) in variants" 
+                        :key="variant.id"
+                        @click="updateProduct(index)">
+                    <img :src="variant.iconImage" 
+                            class="variant-icon" 
+                            :class="{ activeVariant: selectedVariant == index}">
+                </div>
             </div>
             
-            <div class="product-info-container">
-                <h1>{{ product.title }}</h1>
-                <h3>{{ product.brand }}</h3>
-                <h2>{{ product.price }}</h2>
-                <h3>{{ variants[selectedVariant].color }}</h3>
-                
-                <div class="variants">
-                    <div v-for="(variant, index) in variants" 
-                            :key="variant.id"
-                            @click="updateProduct(index)">
-                        <img :src="variant.iconImage" 
-                                class="variant-icon" 
-                                :class="{ activeVariant: selectedVariant == index}">
-                    </div>
-                </div>
-                
-                <ul>
-                    <li v-for="detail in details">{{ detail }}</li>
-                </ul>
-                
-                <button @click="addToCart"
-                        :disabled="soldOut"
-                        :class="{ disabledButton: soldOut }">
-                Lägg i varukorg
-                </button>
-            </div>
+            <ul>
+                <li v-for="detail in details">{{ detail }}</li>
+            </ul>
+            
+            <button @click="addToCart"
+                    :disabled="soldOut"
+                    :class="{ disabledButton: soldOut }">
+            Lägg i varukorg
+            </button>
         </div>
-    </div>`,
+    </div>
+    `,
     data() {
         return {
             product: {
@@ -75,13 +64,12 @@ Vue.component('product', {
                     iconImage: './assets/pot-beige-icon.jpg',
                     quantity: 0
                 }
-            ],
-            cart: ''
+            ]
         }
     }, 
     methods: {
         addToCart: function() {
-            this.cart ++;
+            this.$emit('add-to-cart');
         },
         updateProduct: function(index) {
             this.selectedVariant = index
@@ -98,5 +86,13 @@ Vue.component('product', {
 
 })
 var app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        cart: ''
+    },
+    methods: {
+        updateCart: function() {
+            this.cart ++;
+        }
+    }
 })

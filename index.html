@@ -12,7 +12,17 @@
 </head>
 <body>
     <div id="app">
-        <product></product>
+        <nav>
+            <div class="menu-container">
+                <div class="cart-container">
+                    <span class="cart material-icons">shopping_cart</span>
+                    <div :class="{ cartCount: cart > 0}">
+                        <p>{{ cart }}</p>
+                    </div>
+                </div>       
+            </div>
+        </nav>
+        <product @add-to-cart="updateCart"></product>
     </div>
 
     
