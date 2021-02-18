@@ -11,8 +11,21 @@ h1 {
     margin: 0;
 }
 
-h2, h3, p {
-    margin: 0;
+h3, p {
+    margin: .5rem 0;
+}
+
+h2 {
+    margin: 2rem 0;
+}
+
+li {
+    font-size: 1.2rem;
+    margin: .5rem 0;
+}
+
+ul {
+    margin: 5rem 0;
 }
 
 /* Menu */
@@ -47,8 +60,8 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.6rem;
+    width: 1.6rem;
     border-radius: 50%;
     background-color: #8C8B88;
     color: white;   
