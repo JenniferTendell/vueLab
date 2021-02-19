@@ -40,7 +40,7 @@ Vue.component('product', {
                 brand: 'Ellos Home',
                 price: '349 SEK',
                 },
-            details: ['Kruka av stengods', 'Matt finish', 'Reliefmönster'],
+            details: ['Kruka av stengods', 'Matt finish', 'Reliefmönster', 'Diameter: 19,5cm', 'Höjd: 17cm'],
             selectedVariant: 0,
             variants: [
                 {

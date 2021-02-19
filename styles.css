@@ -7,25 +7,20 @@ body {
 
 /* Text */
 h1 {
-    font-size: 3rem;
     margin: 0;
 }
 
-h3, p {
+h3, p, li {
     margin: .5rem 0;
 }
 
 h2 {
-    margin: 2rem 0;
-}
-
-li {
-    font-size: 1.2rem;
-    margin: .5rem 0;
+    margin: 1rem 0 3rem 0;
 }
 
 ul {
-    margin: 5rem 0;
+    margin: 2rem 0 3rem 0;
+    list-style-type: circle;
 }
 
 /* Menu */
@@ -40,9 +35,11 @@ nav {
 .menu-container {
     display: flex;
     justify-content: flex-end;
-    width: 60%;  
+    width: 80rem;
+    padding: 0 2rem;  
 }
 
+/* Shopping cart */
 .cart-container {
     position: relative;
     display: flex;
@@ -70,28 +67,30 @@ nav {
 /* Product */
 .product {
     display: flex;
-    width: 60%;
-    margin: 3rem auto 0 auto;
+    justify-content: center;
+    margin: 3rem 2rem 2rem 2rem;
 }
 
+/* Product image */
 .image-container {
     display: flex;
-    flex: 1;
+    justify-content: center; 
 }
 
 .product-image {
-    width: 80%;
+    max-width: 80%;
     object-fit: cover;
-    object-position: center;
 }
 
+/* Product info */
 .product-info-container {
     display: flex;
-    flex: 1;
     flex-direction: column; 
     margin-top: 2rem;  
+    padding: 0 2rem;
 }
 
+/* Variants */
 .variants {
     display: flex;
 }
@@ -108,6 +107,7 @@ nav {
     border-bottom: .5rem solid #8C8B88;
 }
 
+/* Button */
 button {
     padding: 1rem 0;
     background-color: #262520;

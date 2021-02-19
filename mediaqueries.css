@@ -1,0 +1,38 @@
+/* Tablet */
+
+@media (max-width: 950px) {
+
+    .product {
+        flex-direction: column;
+        margin: .5rem 0 1rem 0;
+    }
+
+    .product-image {
+        max-width: 75%;
+    }
+
+    .product-info-container {
+        margin: .8rem auto;
+        width: 75%;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 415px) {
+    nav {
+        height: 3rem;
+    }
+
+    .cart {
+        font-size: 2rem !important;
+    }
+    .product-image {
+        max-width: 95%;
+    }
+
+    .variant-icon {
+        width: 4rem;
+        height: 5rem;
+    }
+}
